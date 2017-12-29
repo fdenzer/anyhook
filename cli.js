@@ -39,7 +39,8 @@ if (fs.existsSync(CONFIG_PATH)) {
 }
 
 if (! fs.existsSync(config.hooks)) {
-    onError('Hooks file not found');
+    // filename from full path: https://stackoverflow.com/a/423385/3306671
+    onError(`File ${config.hooks.replace(/^.*[\\\/]/, '')} not found`);
 }
 
 express()
